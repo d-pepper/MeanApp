@@ -14,9 +14,23 @@ app.post('/api/posts', function(req, res, next){
     });
 
     post.save(function (err, post){
+        console.log(post)
         if(err) { return next(err) }
         res.json(201, post)
     });
+
+    //res.status(201).json({post: post});
+    //console.log(post);
+
+});
+
+app.get('/api/posts', function(req, res){
+    res.json([
+        {
+            username: 'dale',
+            body: 'Node rocks!'
+        }
+    ])
 });
 
 app.listen(3000, function(){
